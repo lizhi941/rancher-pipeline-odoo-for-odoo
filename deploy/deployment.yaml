@@ -54,13 +54,13 @@ spec:
           value: odoo
         - name: PASSWORD
           value: odoo
-        volumeMounts:
-           - name: odoo-addons
-             mountPath: "/mnt/extra-addons"
-           - name: odoo-config
-             mountPath: "/etc/odoo"
-           - name: odoo-web
-             mountPath: "/var/lib/odoo"
+        #volumeMounts:
+        #   - name: odoo-addons
+        #     mountPath: "/mnt/extra-addons"
+        #   - name: odoo-config
+        #     mountPath: "/etc/odoo"
+        #   - name: odoo-web
+        #     mountPath: "/var/lib/odoo"
         ports:
         - containerPort: 8069
         - containerPort: 8071
