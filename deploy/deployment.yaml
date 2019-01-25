@@ -1,0 +1,67 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: odoo-service
+spec:
+  selector:
+    app: odoo
+  type: NodePort
+  ports:
+    - name: 8069-http
+      protocol: TCP
+      port: 8069
+      targetPort: 8069
+    - name: 8071-http
+      protocol: TCP
+      port: 8071
+      targetPort: 8071
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odoo
+  labels:
+    app: odoo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odoo
+  template:
+    metadata:
+      labels:
+        app: odoo
+    spec:
+      volumes:
+      - name: odoo-addons
+        persistentVolumeClaim:
+                claimName: odoo-addons
+      - name: odoo-config
+        persistentVolumeClaim: odoo-config
+      - name: odoo-web
+        persistentVolumeClaim: odoo-web
+      - name:   
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: odoo
+        image: odoo:12.0
+        env:
+        - name: HOST
+                value: odoodb-service
+        - name: USER
+                value: odoo
+        - name: PASSWORD
+                value: odoo
+        volumeMounts:
+           - name: odoo-addons
+             mountPath: "/mnt/extra-addons"
+           - name: odoo-config
+             mountPath: "/etc/odoo"
+           - name: odoo-web
+             mountPath: "/var/lib/odoo"
+
+  
+        ports:
+        - containerPort: 8069
+        - containerPort: 8071

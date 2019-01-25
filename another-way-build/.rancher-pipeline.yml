@@ -1,0 +1,11 @@
+stages:
+- name: Publish image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./12.0/Dockerfile
+      buildContext: ./12.0
+      tag: odoo:${CICD_EXECUTION_SEQUENCE}
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deploy/deployment.yaml
