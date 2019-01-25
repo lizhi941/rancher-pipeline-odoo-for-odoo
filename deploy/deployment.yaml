@@ -37,10 +37,11 @@ spec:
         persistentVolumeClaim:
                 claimName: odoo-addons
       - name: odoo-config
-        persistentVolumeClaim: odoo-config
+        persistentVolumeClaim: 
+                claimName: odoo-config                 
       - name: odoo-web
-        persistentVolumeClaim: odoo-web
-      - name:   
+        persistentVolumeClaim: 
+                claimName: odoo-web   
       imagePullSecrets:
       - name: pipeline-docker-registry
       containers:
