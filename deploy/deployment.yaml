@@ -49,11 +49,11 @@ spec:
         image: odoo:12.0
         env:
         - name: HOST
-                value: odoodb-service
+          value: odoodb-service
         - name: USER
-                value: odoo
+          value: odoo
         - name: PASSWORD
-                value: odoo
+          value: odoo
         volumeMounts:
            - name: odoo-addons
              mountPath: "/mnt/extra-addons"
@@ -61,8 +61,6 @@ spec:
              mountPath: "/etc/odoo"
            - name: odoo-web
              mountPath: "/var/lib/odoo"
-
-  
         ports:
         - containerPort: 8069
         - containerPort: 8071
