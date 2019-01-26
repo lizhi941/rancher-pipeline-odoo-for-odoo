@@ -42,8 +42,7 @@ spec:
       - name: pipeline-docker-registry
       containers:
       - name: odoo
-        image: odoo:12.0
-        privileged: true
+        image: odoo:10.0
         env:
         - name: HOST
           value: odoodb-service
