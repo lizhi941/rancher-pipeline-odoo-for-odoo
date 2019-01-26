@@ -46,7 +46,7 @@ spec:
       - name: pipeline-docker-registry
       containers:
       - name: odoo
-        image: elicocorp/odoo-china:12.0
+        image: elicocorp/odoo-china:10.0
         env:
         - name: HOST
           value: odoodb-service
