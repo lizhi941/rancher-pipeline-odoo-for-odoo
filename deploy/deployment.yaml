@@ -11,10 +11,6 @@ spec:
       protocol: TCP
       port: 8069
       targetPort: 8069
-    - name: 8071-http
-      protocol: TCP
-      port: 8072
-      targetPort: 8072
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -63,4 +59,3 @@ spec:
         #     mountPath: "/var/lib/odoo"
         ports:
         - containerPort: 8069
-        - containerPort: 8072
